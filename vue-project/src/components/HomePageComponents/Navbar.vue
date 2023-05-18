@@ -5,7 +5,7 @@
             <h1>Home</h1>
         </div>
         <div id="right">
-            <div>Account</div>
+            <div>Account:</div>
             <div id="cart">
                 <div id="cart_count">1</div>
             </div>
@@ -17,6 +17,10 @@
 <script scoped></script>
 
 <style scoped>
+h1{
+  font-weight: 500;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 #navbar{
     width:90%;
     padding: 1%;
