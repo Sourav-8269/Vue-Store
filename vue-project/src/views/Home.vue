@@ -11,4 +11,4 @@ import BannerComponent from "../components/HomePageComponents/Banner.vue";
 import ProductComponent from "../components/HomePageComponents/Products.vue"
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

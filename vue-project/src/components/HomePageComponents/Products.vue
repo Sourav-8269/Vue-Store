@@ -1,15 +1,31 @@
 <template>
   <div>
-    <h1>Products Page</h1>
+    <div v-for="element in data" >{{ element.title}}</div>
+    
   </div>
 </template>
 <script setup>
 import axios from "axios";
-axios.get("https://dummyjson.com/products")
-.then((res)=>{
-    console.log(res)
+import { onMounted } from "vue";
+import {ref} from "vue";
+
+let data=ref([]);
+
+const getData=()=>{
+    axios.get("https://dummyjson.com/products")
+    .then((res)=>{
+        // console.log(res)
+        data.value=res.data.products;
+        // console.log(data)
+    })
+    .catch((err)=>console.log(err))
+}
+
+onMounted(()=>{
+    getData()
 })
-.catch((err)=>console.log(err))
+
+
 </script>
 
 <style lang="scss" scoped></style>
