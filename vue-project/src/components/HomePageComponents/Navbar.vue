@@ -7,7 +7,7 @@
       <div id="right">
         <div>Account:</div>
         <div id="cart">
-            <q-icon name="shopping_cart" ></q-icon>
+            <q-icon name="shopping_cart" >{{ msg }}</q-icon>
           <div id="cart_count">1</div>
         </div>
       </div>
@@ -15,7 +15,9 @@
   </div>
 </template>
 
-<script scoped></script>
+<script setup>
+
+</script>
 
 <style scoped>
 h1 {
