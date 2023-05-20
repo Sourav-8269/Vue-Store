@@ -1,9 +1,10 @@
 <template>
   <div id="products">
     <div v-for="element in data" id="single_product">
-      <img :src="element.images[0]" :alt="element.title" srcset="" />
-      <p>{{ element.title }}</p>
-      <p>{{ element.price }}</p>
+      <img :src="element.thumbnail" :alt="element.title" srcset="" />
+      <p>Title: {{ element.title }}</p>
+      <p>Price: {{ element.price }}</p>
+      <p>Rating: {{ element.rating }}</p>
     </div>
   </div>
 </template>
@@ -18,7 +19,7 @@ const getData = () => {
   axios
     .get("https://dummyjson.com/products")
     .then((res) => {
-      //   console.log(res)
+        console.log(res)
       data.value = res.data.products;
       console.log(data);
     })
@@ -32,17 +33,23 @@ onMounted(() => {
 
 <style scoped>
 #products {
-    /* margin-top: 3%; */
-    display: grid;
-    width: 90%;
+  display: grid;
+  width: 90%;
     margin: auto;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 3%;
+    grid-column-gap: 3%;
+    grid-row-gap:1%;
+    margin-top: 3%;
 }
 #single_product{
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius:25px;
+    padding:10%;
+    text-align:left;
 }
-#products>div img{
+#products img{
     width: 100%;
+    border-radius: 10px;
 }
 </style>
