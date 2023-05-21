@@ -17,17 +17,21 @@ const data = ref([]);
 
 const getData = () => {
   axios
-    .get("https://dummyjson.com/products")
+    .get("https://dummyjson.com/products?skip=35")
     .then((res) => {
-        console.log(res)
+        // console.log(res.data)
       data.value = res.data.products;
-      console.log(data);
+      // console.log(data);
     })
     .catch((err) => console.log(err));
 };
 
 onMounted(() => {
   getData();
+  let count=0;
+  count++;
+  console.log(count);
+  
 });
 </script>
 
