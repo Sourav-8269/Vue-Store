@@ -13,6 +13,11 @@ import axios from "axios";
 import { onMounted } from "vue";
 import { ref } from "vue";
 
+// Vue Lifecycles
+// onMounted
+// onUpdated
+// onUnmounted
+
 const data = ref([]);
 
 const getData = () => {
