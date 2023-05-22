@@ -1,11 +1,10 @@
 <template>
   <div>
-    <HomePage/>
+    <RouterView></RouterView>
   </div>
 </template>
 
 <script setup>
-import HomePage from "./views/Home.vue"
 </script>
 <style scoped>
 body {
