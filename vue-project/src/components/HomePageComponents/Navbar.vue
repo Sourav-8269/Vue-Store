@@ -2,12 +2,12 @@
   <div>
     <div id="navbar">
       <div id="left">
-        <h1>Home</h1>
+        <h5>Home</h5>
       </div>
       <div id="right">
-        <div>Account:</div>
+        <h5>Account:</h5>
         <div id="cart">
-            <q-icon name="shopping_cart" >{{ msg }}</q-icon>
+            <q-icon name="shopping_cart" size="20px" >{{ msg }}</q-icon>
           <div id="cart_count">1</div>
         </div>
       </div>

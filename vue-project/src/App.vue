@@ -1,10 +1,12 @@
 <template>
   <div>
+    <NavbarComponent/>
     <RouterView></RouterView>
   </div>
 </template>
 
 <script setup>
+import NavbarComponent from './components/HomePageComponents/Navbar.vue';
 </script>
 <style scoped>
 body {

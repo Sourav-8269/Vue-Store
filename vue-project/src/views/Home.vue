@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavbarComponent />
+    <!-- <NavbarComponent /> -->
     <BannerComponent welcomemsg="Welcome to Vue Shop" />
     <ProductComponent/>
   </div>
