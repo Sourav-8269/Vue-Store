@@ -33,11 +33,8 @@ const getData = () => {
 
 onMounted(() => {
   getData();
-  let count=0;
-  count++;
-  console.log(count);
-  
 });
+
 </script>
 
 <style scoped>
