@@ -12,6 +12,10 @@
 import axios from "axios";
 import { onMounted } from "vue";
 import { ref } from "vue";
+import {db,collection,getDocs} from "../../firebase.js";
+import { async } from "@firebase/util";
+// console.log(db)
+
 
 // Vue Lifecycles
 // onMounted
@@ -22,17 +26,22 @@ const data = ref([]);
 
 const getData = () => {
   axios
-    .get("https://dummyjson.com/products?skip=35")
-    .then((res) => {
-        // console.log(res.data)
-      data.value = res.data.products;
-      // console.log(data);
-    })
-    .catch((err) => console.log(err));
+  .get("https://dummyjson.com/products?skip=35")
+  .then((res) => {
+    // console.log(res.data)
+    data.value = res.data.products;
+    // console.log(data);
+  })
+  .catch((err) => console.log(err));
 };
 
-onMounted(() => {
+onMounted(async() => {
   getData();
+  const querySnapshot = await getDocs(collection(db, "vuestore"));
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  });
 });
 
 </script>
