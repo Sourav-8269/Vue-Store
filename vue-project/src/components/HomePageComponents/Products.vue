@@ -55,6 +55,7 @@ onMounted(async() => {
     grid-column-gap: 3%;
     grid-row-gap:1%;
     margin-top: 3%;
+    /* border: 1px solid red; */
 }
 #single_product{
     /* border: 1px solid red; */
