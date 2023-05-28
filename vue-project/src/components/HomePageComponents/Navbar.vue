@@ -2,7 +2,7 @@
   <div>
     <div id="navbar">
       <div id="left">
-        <h5>Home</h5>
+        <h5 @click="navigate()">Home</h5>
       </div>
       <div id="right">
         <h5>Account:</h5>
@@ -16,7 +16,12 @@
 </template>
 
 <script setup>
-
+import { useRouter } from 'vue-router';
+const router=useRouter();
+const navigate=()=>{
+  console.log("clicked");
+  router.push("/")
+}
 </script>
 
 <style scoped>
