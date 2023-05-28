@@ -1,7 +1,8 @@
 <template>
   <div id="products">
-    <div v-for="element in data" id="single_product">
-      <img :src="element.thumbnail" :alt="element.title" srcset="" />
+    <div v-for="element in data" id="single_product" @click="showProduct(element.id)">
+      <!-- <img :src="element.thumbnail" :alt="element.title" srcset="" /> -->
+      <img :src="element.imageUrl" :alt="element.title" srcset="" />
       <p>Title: {{ element.title }}</p>
       <p>Price: {{ element.price }}</p>
       <p>Rating: {{ element.rating }}</p>
@@ -11,11 +12,13 @@
 <script setup>
 import axios from "axios";
 import { onMounted } from "vue";
+import {useRouter} from "vue-router"
 import { ref } from "vue";
 import {db,collection,getDocs} from "../../firebase.js";
 import { async } from "@firebase/util";
 // console.log(db)
 
+const router=useRouter();
 
 // Vue Lifecycles
 // onMounted
@@ -36,13 +39,22 @@ const getData = () => {
 };
 
 onMounted(async() => {
-  getData();
+  // getData();
   const querySnapshot = await getDocs(collection(db, "vuestore"));
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
     console.log(doc.id, " => ", doc.data());
+    let product=doc.data();
+    product.id=doc.id;
+    data.value.push(product);
+    console.log(data)
   });
 });
+
+const showProduct=(id)=>{
+  console.log(id);
+  router.push(`productDetails/${id}`)
+}
 
 </script>
 
