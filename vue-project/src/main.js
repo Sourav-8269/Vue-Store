@@ -1,6 +1,7 @@
 // FILE: main.js
 
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import { Quasar } from 'quasar'
 
 
@@ -16,6 +17,7 @@ import 'quasar/dist/quasar.css'
 // and placed in same folder as main.js
 import App from './App.vue'
 
+const pinia = createPinia()
 const myApp = createApp(App)
 
 myApp.use(Quasar, {
@@ -23,6 +25,7 @@ myApp.use(Quasar, {
 })
 
 myApp.use(router);
+myApp.use(pinia)
 
 // Assumes you have a <div id="app"></div> in your index.html
 myApp.mount('#app')

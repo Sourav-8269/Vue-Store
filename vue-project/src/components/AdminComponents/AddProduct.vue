@@ -13,6 +13,16 @@
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
           />
+          <q-input
+            filled
+            v-model="form.imageUrl"
+            label="Product Image"
+            hint="Product Image"
+            lazy-rules
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+          />
 
           <q-input
             filled
@@ -130,6 +140,7 @@ const onSubmit = async () => {
   // Add a new document with a generated id.
   const docRef = await addDoc(collection(db, "vuestore"),form);
   console.log("Document written with ID: ", docRef.id);
+  onReset()
 };
 
 const onReset = () => {

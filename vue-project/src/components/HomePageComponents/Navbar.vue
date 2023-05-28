@@ -2,7 +2,7 @@
   <div>
     <div id="navbar">
       <div id="left">
-        <h5 @click="navigate()">Home</h5>
+        <h5 id="home" @click="navigate()">Home</h5>
       </div>
       <div id="right">
         <h5>Account:</h5>
@@ -43,6 +43,9 @@ h1 {
   display: flex;
   flex: 3;
   align-items: center;
+}
+#home{
+  cursor: pointer;
 }
 #right {
   display: flex;

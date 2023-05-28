@@ -1,11 +1,10 @@
 <template>
   <div id="products">
-    <div v-for="element in data" id="single_product" @click="showProduct(element.id)">
+    <div v-for="element in data" id="single_product" @click="showProduct(element.id)" >
       <!-- <img :src="element.thumbnail" :alt="element.title" srcset="" /> -->
       <img :src="element.imageUrl" :alt="element.title" srcset="" />
       <p>Title: {{ element.title }}</p>
       <p>Price: {{ element.price }}</p>
-      <p>Rating: {{ element.rating }}</p>
     </div>
   </div>
 </template>
@@ -15,7 +14,6 @@ import { onMounted } from "vue";
 import {useRouter} from "vue-router"
 import { ref } from "vue";
 import {db,collection,getDocs} from "../../firebase.js";
-import { async } from "@firebase/util";
 // console.log(db)
 
 const router=useRouter();
@@ -75,6 +73,7 @@ const showProduct=(id)=>{
     border-radius:25px;
     padding:10%;
     text-align:left;
+    cursor: pointer;
 }
 #products img{
     width: 100%;
