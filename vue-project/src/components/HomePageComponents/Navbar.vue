@@ -8,7 +8,7 @@
         <h5>Account:</h5>
         <div id="cart">
             <q-icon name="shopping_cart" size="20px" >{{ msg }}</q-icon>
-          <div id="cart_count">1</div>
+          <div id="cart_count">{{ cartStore.cartCount }}</div>
         </div>
       </div>
     </div>
@@ -17,6 +17,11 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
+import { useCartStore } from '../../store.js';
+
+const cartStore=useCartStore();
+console.log(cartStore)
+
 const router=useRouter();
 const navigate=()=>{
   console.log("clicked");

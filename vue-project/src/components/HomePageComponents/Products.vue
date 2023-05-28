@@ -1,10 +1,11 @@
 <template>
   <div id="products">
-    <div v-for="element in data" id="single_product" @click="showProduct(element.id)" >
+    <div v-for="element in data" id="single_product" @click="showProduct(element.id)">
       <!-- <img :src="element.thumbnail" :alt="element.title" srcset="" /> -->
       <img :src="element.imageUrl" :alt="element.title" srcset="" />
       <p>Title: {{ element.title }}</p>
       <p>Price: {{ element.price }}</p>
+      <q-btn id="addtoCart" color="black" label="Add to Cart"/>
     </div>
   </div>
 </template>
@@ -41,11 +42,11 @@ onMounted(async() => {
   const querySnapshot = await getDocs(collection(db, "vuestore"));
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
+    // console.log(doc.id, " => ", doc.data());
     let product=doc.data();
     product.id=doc.id;
     data.value.push(product);
-    console.log(data)
+    // console.log(data)
   });
 });
 
