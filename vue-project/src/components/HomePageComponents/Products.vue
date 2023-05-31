@@ -5,7 +5,6 @@
       <img :src="element.imageUrl" :alt="element.title" srcset="" />
       <p>Title: {{ element.title }}</p>
       <p>Price: {{ element.price }}</p>
-      <q-btn id="addtoCart" color="black" label="Add to Cart"/>
     </div>
   </div>
 </template>
@@ -51,7 +50,7 @@ onMounted(async() => {
 });
 
 const showProduct=(id)=>{
-  console.log(id);
+  // console.log(id);
   router.push(`productDetails/${id}`)
 }
 

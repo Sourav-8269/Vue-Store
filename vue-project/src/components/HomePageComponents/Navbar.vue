@@ -20,11 +20,10 @@ import { useRouter } from 'vue-router';
 import { useCartStore } from '../../store.js';
 
 const cartStore=useCartStore();
-console.log(cartStore)
+// console.log(cartStore)
 
 const router=useRouter();
 const navigate=()=>{
-  console.log("clicked");
   router.push("/")
 }
 </script>

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 // You can name the return value of `defineStore()` anything you want,
 // but it's best to use the name of the store and surround it with `use`
@@ -8,7 +8,12 @@ import { ref } from 'vue'
 export const useCartStore = defineStore('cart',()=>{
   // other options...
   const cart=ref([]);
-  const cartCount=ref(0)
+  const cartCount=computed(()=>cart.value.length);
 
-  return {cart,cartCount};
+  const addtoCart=(product)=>{
+    cart.value.push(product);
+    console.log(cart.value);
+  }
+
+  return {cart,cartCount,addtoCart};
 })
