@@ -7,8 +7,9 @@
       <div id="right">
         <h5>Account:</h5>
         <div id="cart">
-            <q-icon name="shopping_cart" size="20px" >{{ msg }}</q-icon>
-          <div id="cart_count">{{ cartStore.cartCount }}</div>
+            <q-icon name="shopping_cart" @click="dialog=!dialog" size="20px" >{{ msg }}</q-icon>
+            <div id="cart_count">{{ cartStore.cartCount }}</div>
+            <CartSideBarComponent :visibility="dialog"/>
         </div>
       </div>
     </div>
@@ -18,6 +19,11 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { useCartStore } from '../../store.js';
+import CartSideBarComponent from '../CartComponents/CartSideBar.vue';
+import { ref } from 'vue';
+
+const dialog=ref(false);
+console.log(dialog);
 
 const cartStore=useCartStore();
 // console.log(cartStore)
