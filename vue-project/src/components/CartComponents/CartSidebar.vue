@@ -1,19 +1,27 @@
 <template>
   <div id="cart">
-    {{ visibility }}  
-    <q-dialog :seamless="true" :modelValue="visibility" position="right">
+    <q-dialog :seamless="true" :model-value=visibility position="right" auto-close="true">
       <q-card id="cart_section" style="width: 350px">
         <q-card-section>
-          <div>
+          <div v-if="!cartStore.cart.length" >
+            <h4> No Recently Added Items</h4>
+          </div>
+          <div v-else >
             <h4>Recently Added Items</h4>
           </div>
 
           <q-space />
 
           <div id="cart_products">
-            <div v-for="item in 3" id="single_product">
-              <div id="lhs">Image</div>
-              <div id="rhs">Product Name</div>
+            <div v-for="products in cartStore.cart" id="single_product">
+              <div id="lhs">
+                <img :src=products.imageUrl alt="" srcset="">
+              </div>
+              <div id="rhs">
+                <p>Title: {{ products.title }}</p>
+                <p>Price: {{ products.price }}</p>
+                <q-icon name="delete" @click="removeFromCart(products.id)" />
+              </div>
             </div>
           </div>
         </q-card-section>
@@ -23,17 +31,22 @@
 </template>
 
 <script setup>
-import { ref, defineProps } from 'vue';
-
+import { useCartStore } from '../../store';
 defineProps(["visibility"]);
-const dialog = ref(true);
-console.log(dialog.value);
+
+const cartStore=useCartStore();
+
+const removeFromCart=(id)=>{
+  cartStore.removeFromCart(id)
+}
+
 </script>
 
 <style scoped>
 #cart_section {
   height: 900px;
-  margin-top: 10%;
+  margin-top: 13%;
+  /* border: 1px solid black; */
 }
 
 #single_product {
@@ -50,8 +63,13 @@ console.log(dialog.value);
   flex: 6;
 }
 
+#lhs img{
+  width: 90%;
+}
+
 #rhs {
   display: flex;
   flex: 4;
+  flex-direction: column;
 }
 </style>

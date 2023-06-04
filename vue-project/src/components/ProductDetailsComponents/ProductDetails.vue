@@ -30,7 +30,9 @@ onMounted(async()=>{
     const docSnap=await getDoc(docRef);
     if(docSnap.exists()){
         // console.log(docSnap.data());
-        product.value=docSnap.data();
+        let data=docSnap.data();
+        data.id=docSnap.id;
+        product.value=data;
         // console.log(product)
     }else{
         console.log("No Such Document");

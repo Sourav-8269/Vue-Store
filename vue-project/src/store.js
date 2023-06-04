@@ -12,8 +12,14 @@ export const useCartStore = defineStore('cart',()=>{
 
   const addtoCart=(product)=>{
     cart.value.push(product);
-    console.log(cart.value);
   }
 
-  return {cart,cartCount,addtoCart};
+  const removeFromCart=(id)=>{
+    console.log(id)
+    cart.value=cart.value.filter((el)=>{
+      return el.id!==id;
+    })
+  }
+
+  return {cart,cartCount,addtoCart,removeFromCart};
 })

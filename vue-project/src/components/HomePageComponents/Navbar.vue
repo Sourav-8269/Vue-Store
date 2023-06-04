@@ -23,7 +23,6 @@ import CartSideBarComponent from '../CartComponents/CartSideBar.vue';
 import { ref } from 'vue';
 
 const dialog=ref(false);
-console.log(dialog);
 
 const cartStore=useCartStore();
 // console.log(cartStore)
@@ -67,6 +66,7 @@ h1 {
 #cart{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 #cart_count{
     padding-bottom: 12px;
