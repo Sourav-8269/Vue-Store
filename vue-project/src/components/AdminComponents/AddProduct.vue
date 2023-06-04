@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h3 id="heading" >Add Product</h3>
     <div id="addproductform">
       <div class="q-pa-md" style="max-width: 400px">
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
@@ -151,4 +152,21 @@ const onReset = () => {
   file.value = "";
 };
 </script>
-<style scoped></style>
+<style scoped>
+*{
+  margin: 0;
+  padding: 0;
+  /* outline: 1px solid red; */
+}
+#heading{
+  text-align: center;
+  font-size: 30px;
+  margin-top: 10px;
+  /* border: 1px solid red; */
+}
+#addproductform{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

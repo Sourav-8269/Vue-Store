@@ -4,7 +4,8 @@
 import {createRouter,createWebHistory} from "vue-router";
 import Home from "./views/Home.vue";
 import Admin from "./views/Admin.vue";
-import showProductDetails from "./views/showProductDetails.vue"
+import showProductDetails from "./views/showProductDetails.vue";
+import Orders from "./views/Orders.vue";
 
 // 2. Define some routes
 // Each route should map to a component.
@@ -12,7 +13,8 @@ import showProductDetails from "./views/showProductDetails.vue"
 const routes = [
   { path: '/', component: Home },
   {path:"/admin",component:Admin},
-  {path:"/productdetails/:id",component:showProductDetails}
+  {path:"/productdetails/:id",component:showProductDetails},
+  {path:"/orders",component:Orders}
 ]
 
 // 3. Create the router instance and pass the `routes` option

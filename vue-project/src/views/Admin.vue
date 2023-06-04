@@ -9,11 +9,6 @@
 
 <script setup>
 import AddProductComponent from '../components/AdminComponents/AddProduct.vue';
-import { ref,reactive } from 'vue';
-
-const form=reactive({
-  name:""
-});
 
 </script>
 <style scoped></style>

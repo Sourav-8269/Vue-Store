@@ -7,7 +7,7 @@
       <div id="right">
         <h5>Account:</h5>
         <div id="cart">
-            <q-icon name="shopping_cart" @click="dialog=!dialog" size="20px" >{{ msg }}</q-icon>
+            <q-icon name="shopping_cart" @click="dialog=!dialog" size="20px" ></q-icon>
             <div id="cart_count">{{ cartStore.cartCount }}</div>
             <CartSideBarComponent :visibility="dialog"/>
         </div>

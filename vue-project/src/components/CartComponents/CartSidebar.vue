@@ -1,7 +1,7 @@
 <template>
-  <div id="cart">
-    <q-dialog :seamless="true" :model-value=visibility position="right" auto-close="true">
-      <q-card id="cart_section" style="width: 350px">
+  <div>
+    <q-dialog seamless :model-value=visibility position="right" auto-close="true">
+      <q-card  id="cart_section" style="width: 350px">
         <q-card-section>
           <div v-if="!cartStore.cart.length" >
             <h4> No Recently Added Items</h4>
@@ -24,6 +24,12 @@
               </div>
             </div>
           </div>
+
+          <div id="order" v-if="cartStore.cart.length" >
+            <router-link to="/orders">
+              <q-btn color="secondary" label="Proceed" />
+            </router-link>
+          </div>
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -39,7 +45,6 @@ const cartStore=useCartStore();
 const removeFromCart=(id)=>{
   cartStore.removeFromCart(id)
 }
-
 </script>
 
 <style scoped>
@@ -51,6 +56,7 @@ const removeFromCart=(id)=>{
 
 #single_product {
   display: flex;
+  margin-bottom: 5%;
 }
 
 #single_product > div {
@@ -71,5 +77,8 @@ const removeFromCart=(id)=>{
   display: flex;
   flex: 4;
   flex-direction: column;
+}
+#order{
+  margin-bottom: 5%;
 }
 </style>
