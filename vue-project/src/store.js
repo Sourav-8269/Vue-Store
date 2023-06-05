@@ -10,6 +10,13 @@ export const useCartStore = defineStore('cart',()=>{
   const cart=ref([]);
   const cartCount=computed(()=>cart.value.length);
 
+  const carTotal=computed(()=>{
+    return cart.value.reduce((total,product)=>{
+      console.log(total,product)
+      return Number(total)+Number(product.price);
+    },0)
+  })
+
   const addtoCart=(product)=>{
     cart.value.push(product);
   }
@@ -21,5 +28,5 @@ export const useCartStore = defineStore('cart',()=>{
     })
   }
 
-  return {cart,cartCount,addtoCart,removeFromCart};
+  return {cart,cartCount,addtoCart,removeFromCart,carTotal};
 })

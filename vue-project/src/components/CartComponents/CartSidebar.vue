@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-dialog seamless :model-value=visibility position="right" auto-close="true">
+    <q-dialog seamless :model-value="visibility" position="right" auto-close="true" ref="dialog">
       <q-card  id="cart_section" style="width: 350px">
         <q-card-section>
           <div v-if="!cartStore.cart.length" >

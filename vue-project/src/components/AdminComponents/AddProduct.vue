@@ -147,7 +147,7 @@ const onSubmit = async () => {
 const onReset = () => {
   // console.log("Reset")
   form.title = "";
-  form.price = 0;
+  form.price = null;
   form.imageUrl = "";
   file.value = "";
 };
