@@ -5,8 +5,8 @@
       <img :src="product.imageUrl" :alt="product.title" srcset="" />
     </div>
     <div id="rhs">
-      <p>Title: {{ product.title }}</p>
-      <p>Price: {{ product.price }}</p>
+      <p> {{ product.title }}</p>
+      <p>&#8377; {{ product.price }}</p>
       <q-btn @click="addtoCart(product)" id="addtoCart" color="black" label="Add to Cart"/>
     </div>
   </div>
@@ -63,5 +63,22 @@ onMounted(async()=>{
   display: flex;
   flex: 5;
   flex-direction: column;
+}
+@media all and (min-width: 550px) and (max-width: 900px) {
+  #container{
+    width: 70%;
+  }
+  #lhs img{
+  width: 100%;
+}
+}
+@media all and (min-width: 200px) and (max-width: 550px) {
+  #container{
+    width: 90%;
+    font-size: 20px;
+  }
+  #lhs img{
+  width: 100%;
+}
 }
 </style>
