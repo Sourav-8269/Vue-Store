@@ -6,7 +6,8 @@ import Home from "./views/Home.vue";
 import Admin from "./views/Admin.vue";
 import showProductDetails from "./views/showProductDetails.vue";
 import Orders from "./views/Orders.vue";
-import DisplayOrders from "./components/AdminComponents/DisplayOrders.vue"
+import DisplayOrders from "./components/AdminComponents/DisplayOrders.vue";
+import DisplaySingleUserOrders from "./components/AdminComponents/DisplaySingleUserOrders.vue";
 
 // 2. Define some routes
 // Each route should map to a component.
@@ -16,7 +17,8 @@ const routes = [
   {path:"/admin",component:Admin},
   {path:"/productdetails/:id",component:showProductDetails},
   {path:"/orders",component:Orders},
-  {path:"/showOrders",component:DisplayOrders}
+  {path:"/showOrders",component:DisplayOrders},
+  {path:"/order/:id",component:DisplaySingleUserOrders},
 ]
 
 // 3. Create the router instance and pass the `routes` option

@@ -1,24 +1,19 @@
 <template>
   <div>
-    <h3 id="heading">Orders</h3>
-    <div id="container" v-for="order in orders">
-      <!-- <h1>This is PD page</h1> -->
+    <h3 id="heading">Orders by Sourav</h3>
+    <div id="container" v-for="product in products">
+      <!-- {{ products }} -->
       <div id="lhs">
-        <img
-          src="https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_640.png"
-          :alt="order.name"
-          srcset=""
-        />
+        <img :src="product.imageUrl" :alt="product.title" srcset="" />
       </div>
       <div id="rhs">
-        <p>Name: {{ order.name }}</p>
-        <p>Address: {{ order.address }}</p>
-        <p>Amount: &#8377; {{ order.total }}</p>
+        <p>{{ product.title }}</p>
+        <p>&#8377; {{ product.price }}</p>
         <q-btn
-          @click="addtoCart(order)"
+          @click="addtoCart(product)"
           id="addtoCart"
           color="black"
-          label="Show Products"
+          label="Add to Cart"
         />
       </div>
     </div>
@@ -26,23 +21,33 @@
 </template>
 <script setup>
 import { onMounted, ref } from "vue";
-import { db, collection, getDocs } from "../../firebase.js";
+import { db, getDoc, doc } from "../../firebase.js";
+import { useRoute } from "vue-router";
+import { useCartStore } from "../../store";
 
-const orders = ref([]);
+const route = useRoute();
+const orders = ref({});
+const products = ref([]);
+const cartStore=useCartStore();
 
-onMounted(async()=>{
-    const docRef=doc(db,"vuestore",route.params.id);
-    const docSnap=await getDoc(docRef);
-    if(docSnap.exists()){
-        // console.log(docSnap.data());
-        let data=docSnap.data();
-        data.id=docSnap.id;
-        product.value=data;
-        // console.log(product)
-    }else{
-        console.log("No Such Document");
-    }
-})
+const addtoCart=(product)=>{
+  cartStore.addtoCart(product);
+}
+
+onMounted(async () => {
+  const docRef = doc(db, "orders", route.params.id);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    // console.log(docSnap.data());
+    let data = docSnap.data();
+    data.id = docSnap.id;
+    orders.value = data;
+    console.log(orders.value.order);
+    products.value = orders.value.order;
+  } else {
+    console.log("No Such Document");
+  }
+});
 </script>
 
 <style scoped>
@@ -74,6 +79,7 @@ onMounted(async()=>{
   display: flex;
   flex: 5;
   flex-direction: column;
+  margin-left: 5%;
 }
 @media all and (min-width: 550px) and (max-width: 900px) {
   #container {
