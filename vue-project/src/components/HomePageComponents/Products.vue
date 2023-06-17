@@ -3,8 +3,8 @@
     <div v-for="element in data" id="single_product" @click="showProduct(element.id)">
       <!-- <img :src="element.thumbnail" :alt="element.title" srcset="" /> -->
       <img :src="element.imageUrl" :alt="element.title" srcset="" />
-      <p>Title: {{ element.title }}</p>
-      <p>Price: {{ element.price }}</p>
+      <p> {{ element.title }}</p>
+      <p>&#8377; {{ element.price }}</p>
     </div>
   </div>
 </template>
@@ -65,6 +65,7 @@ const showProduct=(id)=>{
     grid-column-gap: 3%;
     grid-row-gap:1%;
     margin-top: 3%;
+    font-size: 180%;
     /* border: 1px solid red; */
 }
 #single_product{

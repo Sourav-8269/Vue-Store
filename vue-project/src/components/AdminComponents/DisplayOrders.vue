@@ -93,7 +93,7 @@ const navigate = (id) => {
 @media all and (min-width: 200px) and (max-width: 550px) {
   #container {
     width: 90%;
-    font-size: 20px;
+    font-size: 18px;
   }
   #lhs img {
     width: 100%;
