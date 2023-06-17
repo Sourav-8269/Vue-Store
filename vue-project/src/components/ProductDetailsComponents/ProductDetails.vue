@@ -50,7 +50,8 @@ onMounted(async()=>{
   margin-top: 5%;
   font-size: 180%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius:25px;
+  border-radius:15px;
+  justify-content: space-between;
 }
 #lhs{
   display: flex;
@@ -63,6 +64,7 @@ onMounted(async()=>{
   display: flex;
   flex: 5;
   flex-direction: column;
+  margin-left: 5%;
 }
 @media all and (min-width: 550px) and (max-width: 900px) {
   #container{

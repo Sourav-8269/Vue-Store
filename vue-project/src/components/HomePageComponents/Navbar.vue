@@ -2,9 +2,10 @@
   <div>
     <div id="navbar">
       <div id="left">
-        <h5 id="home" @click="navigate()">Home</h5>
+        <h5 id="home" @click="navigateHome()">Home</h5>
       </div>
       <div id="right">
+        <h5 @click="navigateOrders()">Orders</h5>
         <h5>Account:</h5>
         <div id="cart">
             <q-icon name="shopping_cart" @click="dialog=!dialog" size="20px" ></q-icon>
@@ -28,8 +29,11 @@ const cartStore=useCartStore();
 // console.log(cartStore)
 
 const router=useRouter();
-const navigate=()=>{
+const navigateHome=()=>{
   router.push("/")
+}
+const navigateOrders=()=>{
+  router.push("/showOrders")
 }
 </script>
 
@@ -52,6 +56,13 @@ h1 {
   display: flex;
   flex: 3;
   align-items: center;
+  /* border: 1px solid red; */
+  /* justify-content: space-around; */
+}
+#right>h5:nth-child(1){
+  cursor: pointer;
+  margin-right: 5%;
+  /* border: 1px solid red; */
 }
 #home{
   cursor: pointer;
@@ -70,5 +81,17 @@ h1 {
 }
 #cart_count{
     padding-bottom: 12px;
+}
+@media all and (min-width: 200px) and (max-width: 350px) {
+  #right>h5:nth-child(1){
+    margin-right: 1%;
+  }
+  #right>h5{
+    gap: 5px;
+    font-size: 18px;
+  }
+  #home{
+    font-size: 18px;
+  }
 }
 </style>
