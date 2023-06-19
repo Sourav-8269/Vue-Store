@@ -38,11 +38,6 @@ const navigateOrders=()=>{
 </script>
 
 <style scoped>
-h1 {
-  font-size: 40px;
-  font-weight: 500;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
 #navbar {
   width: 90%;
   padding: 1%;
@@ -61,7 +56,7 @@ h1 {
 }
 #right>h5:nth-child(1){
   cursor: pointer;
-  margin-right: 5%;
+  margin-right: 7px;
   /* border: 1px solid red; */
 }
 #home{
@@ -81,6 +76,14 @@ h1 {
 }
 #cart_count{
     padding-bottom: 12px;
+}
+@media all and (min-width: 350px) and (max-width: 500px) {
+  #right>h5{
+    font-size: 20px;
+  }
+  #home{
+    font-size: 20px;
+  }
 }
 @media all and (min-width: 200px) and (max-width: 350px) {
   #right>h5:nth-child(1){

@@ -18,8 +18,13 @@ defineProps(["welcomemsg"]);
   border-bottom: 1px solid black;
 }
 h1{
-  font-size: 40px;
-  font-weight: 500;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 35px;
+  font-weight: 400;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+}
+@media all and (min-width: 200px) and (max-width: 450px) {
+  h1{
+    font-size: 25px;
+  }
 }
 </style>

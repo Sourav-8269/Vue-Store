@@ -10,7 +10,7 @@ import NavbarComponent from './components/HomePageComponents/Navbar.vue';
 </script>
 <style scoped>
 body {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Poppins" !important;
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;

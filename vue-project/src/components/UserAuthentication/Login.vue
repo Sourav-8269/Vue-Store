@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h5>Login with Google</h5>
     <div id="container">
+      <img class="vue-store-logo" src="../../assets/vuestore.png" alt="" srcset="">
+      <p>Welcome to Vue Store</p>
+      <p>Log in with your OpenAI account to continue</p>
       <button class="google-login-button" @click="handleClick">
         <img src="../../assets/google-logo-png-29546.png" alt="Google" />
         <span>Login with Google</span>
@@ -29,10 +31,24 @@ const handleClick = () => {
 };
 </script>
 <style scoped>
+*{
+  outline: 1px solid red;
+}
 #container {
   display: flex;
   align-items: center;
+  /* border: 1px solid red; */
+  height: 80vh;
+  /* line-height: 1px; */
   justify-content: center;
+  flex-direction: column;
+}
+#container>p:nth-child(1){
+  font-size: 24px;
+}
+.vue-store-logo{
+  width: 100px;
+  /* height: 100px; */
 }
 .google-login-button {
   display: flex;
