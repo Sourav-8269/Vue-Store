@@ -7,7 +7,9 @@
       <div id="right">
         <h5 @click="navigateOrders()">Orders</h5>
         <button class="login-button" @click="navigateLogin()" >Login</button>
-        <h5 id="account">Account:</h5>
+        <h5 id="account" v-if="userData.user.value!=undefined">{{ userData.getFirstName().value }}</h5>
+        <!-- <h5 id="account" v-if="userData.user.value!=undefined">{{userData.user.value.displayName}}</h5> -->
+        <h5 id="account" v-else>Account:</h5>
         <div id="cart">
             <q-icon name="shopping_cart" @click="dialog=!dialog" size="20px" ></q-icon>
             <div id="cart_count">{{ cartStore.cartCount }}</div>
@@ -20,12 +22,13 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { useCartStore } from '../../store.js';
+import { useCartStore, useUserData } from '../../store.js';
 import CartSideBarComponent from '../CartComponents/CartSideBar.vue';
-import { ref } from 'vue';
+import {  ref } from 'vue';
 
 const dialog=ref(false);
 
+const userData=useUserData();
 const cartStore=useCartStore();
 // console.log(cartStore)
 

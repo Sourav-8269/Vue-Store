@@ -30,3 +30,23 @@ export const useCartStore = defineStore('cart',()=>{
 
   return {cart,cartCount,addtoCart,removeFromCart,carTotal};
 })
+
+export const useUserData=defineStore("user",()=>{
+  const user=ref({});
+
+  const firstName=ref("");
+
+  const setFirstName=(name)=>{
+    firstName.value=name;
+  }
+
+  const getFirstName=()=>{
+    if(firstName.value){
+      return firstName;
+    }else{
+      return null;
+    }
+  }
+
+  return {user,firstName,setFirstName,getFirstName}
+})
