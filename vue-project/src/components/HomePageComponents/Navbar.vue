@@ -6,7 +6,8 @@
       </div>
       <div id="right">
         <h5 @click="navigateOrders()">Orders</h5>
-        <button class="login-button" @click="navigateLogin()" >Login</button>
+        <button class="login-button" @click="navigateLogin()" v-if="userData.user.value==undefined">Login</button>
+        <button class="login-button" @click="Logout()" v-else="userData.user.value==undefined">Logout</button>
         <h5 id="account" v-if="userData.user.value!=undefined">{{ userData.getFirstName().value }}</h5>
         <!-- <h5 id="account" v-if="userData.user.value!=undefined">{{userData.user.value.displayName}}</h5> -->
         <h5 id="account" v-else>Account:</h5>
