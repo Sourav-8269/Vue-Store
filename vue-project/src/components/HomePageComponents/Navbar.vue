@@ -8,7 +8,7 @@
         <h5 @click="navigateOrders()">Orders</h5>
         <button class="login-button" @click="navigateLogin()" v-if="userData.user.value==undefined">Login</button>
         <button class="login-button" @click="Logout()" v-else="userData.user.value==undefined">Logout</button>
-        <h5 id="account" v-if="userData.user.value!=undefined">{{ userData.getFirstName().value }}</h5>
+        <h5 id="account" v-if="userData.user.value!=undefined">{{ userData.getFirstName().value }}:</h5>
         <!-- <h5 id="account" v-if="userData.user.value!=undefined">{{userData.user.value.displayName}}</h5> -->
         <h5 id="account" v-else>Account:</h5>
         <div id="cart">
@@ -18,6 +18,29 @@
         </div>
       </div>
     </div>
+      <div class="q-pa-md q-gutter-sm">
+        <q-btn label="Click Me" color="primary" @click="handle()"/>
+
+        <q-dialog v-model="seamless" seamless position="bottom">
+          <q-card style="width: 350px">
+            <q-linear-progress :value=band color="pink"  />
+            <q-linear-progress :value="progress" :buffer="buffer" />
+
+            <q-card-section class="row items-center no-wrap">
+              <div>
+                <div class="text-weight-bold">The Walker</div>
+                <div class="text-grey">Fitz & The Tantrums</div>
+              </div>
+
+              <q-space />
+
+              <q-btn flat round icon="play_arrow" />
+              <q-btn flat round icon="pause" />
+              <q-btn flat round icon="close" v-close-popup />
+            </q-card-section>
+          </q-card>
+        </q-dialog>
+      </div>
   </div>
 </template>
 
@@ -28,10 +51,22 @@ import CartSideBarComponent from '../CartComponents/CartSideBar.vue';
 import {  ref } from 'vue';
 
 const dialog=ref(false);
+const seamless=ref(false);
+const band=ref(0);
 
 const userData=useUserData();
 const cartStore=useCartStore();
 // console.log(cartStore)
+
+const handle=()=>{
+  seamless.value=true
+  let id=setInterval(()=>{
+    band.value+=0.1;
+    if(band.value>1){
+      clearInterval(id)
+    }
+  },350)
+}
 
 const router=useRouter();
 const navigateHome=()=>{
@@ -42,6 +77,11 @@ const navigateOrders=()=>{
 }
 const navigateLogin=()=>{
   router.push("/login")
+}
+
+const Logout=()=>{
+  userData.logout();
+  alert("Logged out")
 }
 </script>
 
@@ -84,6 +124,9 @@ const navigateLogin=()=>{
 }
 #cart_count{
     padding-bottom: 12px;
+}
+#account{
+  font-size: 20px;
 }
 .login-button {
   padding: 8px 20px;

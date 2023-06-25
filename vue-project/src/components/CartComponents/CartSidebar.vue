@@ -81,8 +81,7 @@ const navigateToLogin=()=>{
 }
 
 const navigateToOrders=()=>{
-  // console.log(visibility)
-  console.log(userData.getFirstName());
+  // console.log(userData.getFirstName());
   if((userData.getFirstName()==null||userData.getFirstName().value=="")){
     // alert("Please Sign In first")
     persistent.value=true;

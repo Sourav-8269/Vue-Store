@@ -48,5 +48,10 @@ export const useUserData=defineStore("user",()=>{
     }
   }
 
-  return {user,firstName,setFirstName,getFirstName}
+  const logout=()=>{
+    user.value={};
+    setFirstName(null);
+  }
+
+  return {user,firstName,setFirstName,getFirstName,logout}
 })

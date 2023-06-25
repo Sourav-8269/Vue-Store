@@ -4,7 +4,6 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { Quasar } from 'quasar'
 
-
 import router from "./router.js";
 
 // Import icon libraries
