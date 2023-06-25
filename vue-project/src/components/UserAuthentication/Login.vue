@@ -12,12 +12,36 @@
       <!-- <h1 v-if="userData.user.value.displayName!=undefined">{{userData.user.value.displayName}}</h1> -->
     </div>
   </div>
+  <div class="q-pa-md q-gutter-sm">
+        <q-dialog v-model="seamless" seamless position="bottom">
+          <q-card style="width: 350px">
+            <q-linear-progress :value=band color="green"/>
+
+            <q-card-section class="row items-center no-wrap">
+              <div>
+                <div class="text-weight-bold">Login Success</div>
+                <div class="text-grey">Explore your Journey in Vue Store</div>
+              </div>
+
+              <q-space />
+
+              <q-btn flat round icon="close" v-close-popup />
+            </q-card-section>
+          </q-card>
+        </q-dialog>
+      </div>
 </template>
 
 <script setup>
 import { auth, provider } from "../../firebase.js";
 import { signInWithPopup } from "firebase/auth";
 import { useUserData } from "../../store";
+import {ref} from "vue"
+import { useRouter } from "vue-router";
+const seamless=ref(false);
+const band=ref(0);
+
+const router=useRouter();
 
 function getFirstName(fullName) {
   // Split the full name string into an array of words
@@ -27,18 +51,33 @@ function getFirstName(fullName) {
   return nameParts[0];
 }
 
+
+const handleLogin=()=>{
+  seamless.value=true
+  let id=setInterval(()=>{
+    band.value+=0.1;
+    if(band.value>1){
+      clearInterval(id)
+    }
+  },350)
+}
+
 const userData=useUserData();
 const handleClick = () => {
   try {
     signInWithPopup(auth, provider)
       .then((res) => {
-        console.log(res);
-        console.log(res.user.displayName);
+        // console.log(res);
+        // console.log(res.user.displayName);
         userData.user.value=res.user;
-        console.log(userData.user.value.displayName)
+        // console.log(userData.user.value.displayName)
         let data=getFirstName(userData.user.value.displayName)
         userData.setFirstName(data);
-        console.log(userData.getFirstName());
+        // console.log(userData.getFirstName());
+        handleLogin();
+        setTimeout(()=>{
+          router.push("/")
+        },4000)
       })
       .catch((err) => {
         console.log(err);
@@ -49,11 +88,8 @@ const handleClick = () => {
 };
 </script>
 <style scoped>
-*{
-  /* outline: 1px solid red; */
-  font-size: 20px;
-}
 #container {
+  font-size: 20px;
   display: flex;
   align-items: center;
   /* border: 1px solid red; */

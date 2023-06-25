@@ -19,23 +19,18 @@
       </div>
     </div>
       <div class="q-pa-md q-gutter-sm">
-        <q-btn label="Click Me" color="primary" @click="handle()"/>
-
         <q-dialog v-model="seamless" seamless position="bottom">
           <q-card style="width: 350px">
-            <q-linear-progress :value=band color="pink"  />
-            <q-linear-progress :value="progress" :buffer="buffer" />
+            <q-linear-progress :value=band color="blue"/>
 
             <q-card-section class="row items-center no-wrap">
               <div>
-                <div class="text-weight-bold">The Walker</div>
-                <div class="text-grey">Fitz & The Tantrums</div>
+                <div class="text-weight-bold">Logout Success</div>
+                <div class="text-grey">Bye come back soon!</div>
               </div>
 
               <q-space />
 
-              <q-btn flat round icon="play_arrow" />
-              <q-btn flat round icon="pause" />
               <q-btn flat round icon="close" v-close-popup />
             </q-card-section>
           </q-card>
@@ -58,7 +53,7 @@ const userData=useUserData();
 const cartStore=useCartStore();
 // console.log(cartStore)
 
-const handle=()=>{
+const handleLogout=()=>{
   seamless.value=true
   let id=setInterval(()=>{
     band.value+=0.1;
@@ -80,8 +75,8 @@ const navigateLogin=()=>{
 }
 
 const Logout=()=>{
+  handleLogout();
   userData.logout();
-  alert("Logged out")
 }
 </script>
 
