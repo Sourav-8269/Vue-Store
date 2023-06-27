@@ -18,14 +18,18 @@
                 <img :src=products.imageUrl alt="" srcset="">
               </div>
               <div id="rhs">
-                <p>Title: {{ products.title }}</p>
-                <p>Price: {{ products.price }}</p>
-                <q-icon name="delete" @click="removeFromCart(products.id)" />
+                <q-icon name="close" size="30px" id="remove-icon" @click="removeFromCart(products.id)" >
+                  <q-tooltip class="bg-red" :offset="[10, 10]">
+                    Remove
+                  </q-tooltip>
+                </q-icon>
+                <p>{{ products.title }}</p>
+                <p>&#8377; {{ products.price }}</p>
               </div>
             </div>
           </div>
 
-          <div id="order" v-if="cartStore.cart.length" >
+          <div id="order" v-if="cartStore.cart.length" style="font-family: Poppins;">
             <!-- <router-link to="/orders"> -->
               <q-btn color="secondary" @click="navigateToOrders()" label="Proceed" />
             <!-- </router-link> -->
@@ -104,7 +108,7 @@ const navigateToOrders=()=>{
 }
 
 #single_product > div {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin-top: 5%;
 }
 
@@ -121,8 +125,18 @@ const navigateToOrders=()=>{
   display: flex;
   flex: 4;
   flex-direction: column;
+  font-size: 20px;
+  font-family: Poppins;
+  position: relative;
+  padding-right: 30px;
 }
 #order{
   margin-bottom: 5%;
+}
+#remove-icon{
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
 }
 </style>
