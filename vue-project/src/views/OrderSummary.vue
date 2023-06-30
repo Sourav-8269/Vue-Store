@@ -11,17 +11,17 @@
           <p>{{ product.title }}</p>
           <p>&#8377; {{ product.price }}</p>
           <div id="quantity-div">
-            <q-icon name="remove" size="30px" id="remove-icon">
+            <q-icon name="remove" size="30px" id="remove-icon" @click="handleQuantity(product.id,'remove')">
               <q-tooltip class="bg-red" :offset="[10, 10]">Remove</q-tooltip>
             </q-icon>
-            <p id="quantity">1</p>
+            <p id="quantity">{{ product.quantity }}</p>
             <q-icon
               name="add"
               size="30px"
-              id="remove-icon"
-              @click="removeFromCart(products.id)"
+              id="add-icon"
+              @click="handleQuantity(product.id,'add')"
             >
-              <q-tooltip class="bg-red" :offset="[10, 10]">Add</q-tooltip>
+              <q-tooltip class="bg-blue" :offset="[10, 10]">Add</q-tooltip>
             </q-icon>
           </div>
         </div>
@@ -34,6 +34,10 @@ import { useCartStore } from "../store";
 import { ref } from "vue";
 
 const cartStore = useCartStore();
+
+const handleQuantity=(id,payload)=>{
+  cartStore.handleQuantity(id,payload);
+}
 </script>
 
 <style scoped>
@@ -78,12 +82,19 @@ const cartStore = useCartStore();
   justify-content: space-around;
   width: 50%;
   align-items: center;
+  min-width: 100px;
 }
 #quantity {
   font-size: 25px;
   /* border: 1px solid red; */
   padding: 0%;
   margin: 0%;
+}
+#add-icon {
+  cursor: pointer;
+}
+#remove-icon {
+  cursor: pointer;
 }
 @media all and (min-width: 550px) and (max-width: 900px) {
   #container {
@@ -99,7 +110,7 @@ const cartStore = useCartStore();
     font-size: 20px;
   }
   #quantity {
-  font-size: 20px;
+    font-size: 20px;
   }
   #lhs img {
     width: 100%;
