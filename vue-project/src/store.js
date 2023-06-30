@@ -13,7 +13,7 @@ export const useCartStore = defineStore('cart',()=>{
   const carTotal=computed(()=>{
     return cart.value.reduce((total,product)=>{
       console.log(total,product)
-      return Number(total)+(Number(product.price)*product.quantity);
+      return Number(total)+(Number(product.price)*(product.quantity||1));
     },0)
   })
 
@@ -28,6 +28,17 @@ export const useCartStore = defineStore('cart',()=>{
     cart.value=cart.value.filter((el)=>{
       return el.id!==id;
     })
+  }
+
+  const checkInCart=(id)=>{
+    // console.log(id)
+    let result=cart.value.find((el)=>el.id==id)
+    if(result){
+      return true
+    }else{
+      return false;
+    }
+    // return(false);
   }
 
   const handleQuantity=(id,payload)=>{
@@ -50,7 +61,7 @@ export const useCartStore = defineStore('cart',()=>{
     }
   }
 
-  return {cart,cartCount,addtoCart,removeFromCart,carTotal,handleQuantity};
+  return {cart,cartCount,addtoCart,removeFromCart,carTotal,handleQuantity,checkInCart};
 })
 
 export const useUserData=defineStore("user",()=>{
