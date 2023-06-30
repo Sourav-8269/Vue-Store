@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h3 id="heading" >Add User Details</h3>
-    <div id="addproductform">
-      <div class="q-pa-md" style="max-width: 400px">
+    <div id="main">
+      <div id="addproductform">
+        <div class="q-pa-md" style="max-width: 400px">
+          <h3 id="heading" >Add User Details</h3>
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
           <q-input
             filled
@@ -51,7 +52,7 @@
               color="primary"
               flat
               class="q-ml-sm"
-            />
+              />
             <q-btn label="Submit" type="submit" color="primary" />
           </div>
         </q-form>
@@ -60,6 +61,7 @@
     <div id="order-summary">
       <OrderSummaryComponent/>
     </div>
+  </div>
     <div class="q-pa-md q-gutter-sm">
         <q-dialog v-model="seamless" seamless position="bottom">
           <q-card style="width: 350px">
@@ -145,13 +147,14 @@ const handleLogin=()=>{
 #heading{
   text-align: center;
   font-size: 30px;
-  margin-top: 10px;
+  /* margin-top: 2px; */
+  margin-bottom: 40px;
   /* border: 1px solid red; */
 }
 #addproductform{
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   /* border: 1px solid red; */
 }
 .input{
@@ -174,5 +177,29 @@ const handleLogin=()=>{
   float: right;
   gap: 20px;
   /* justify-content: space-between; */
+}
+#main{
+  /* border: 1px solid red; */
+  display: flex;
+  float: right;
+  width: 80%;
+  margin: auto;
+}
+#order-summary{
+  flex: 1.5;
+}
+#addproductform{
+  flex: 1;
+}
+@media all and (min-width: 550px) and (max-width: 950px) {
+  #main{
+    width: 100%;
+  }
+}
+@media all and (max-width: 950px) {
+  #main{
+    flex-direction: column;
+    width: 100%;
+  }
 }
 </style>

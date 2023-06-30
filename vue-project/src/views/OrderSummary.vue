@@ -43,13 +43,10 @@ const cartStore = useCartStore();
   margin-top: 10px;
   /* border: 1px solid red; */
 }
-/* #order{
-    
-} */
 #container {
   display: flex;
   padding: 5%;
-  width: 50%;
+  width: 90%;
   margin: auto;
   margin-top: 5%;
   font-size: 180%;
@@ -59,6 +56,7 @@ const cartStore = useCartStore();
   justify-content: space-between;
   /* background-color: #f2f2f2; */
   margin-bottom: 5%;
+  /* border: 1px solid red; */
 }
 #lhs {
   display: flex;
@@ -89,7 +87,7 @@ const cartStore = useCartStore();
 }
 @media all and (min-width: 550px) and (max-width: 900px) {
   #container {
-    width: 70%;
+    width: 90%;
   }
   #lhs img {
     width: 100%;
