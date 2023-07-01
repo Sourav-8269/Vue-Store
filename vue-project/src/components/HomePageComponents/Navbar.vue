@@ -165,5 +165,8 @@ const Logout=()=>{
   #home{
     font-size: 18px;
   }
+  #account{
+    display: none;
+  }
 }
 </style>

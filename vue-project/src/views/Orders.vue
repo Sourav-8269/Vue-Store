@@ -115,6 +115,8 @@ const onSubmit = async () => {
   console.log(docRef)
   handleLogin();
   setTimeout(()=>{
+    cartStore.clearCart();
+    console.log(cartStore.cart.value);
     handleNavigate();
   },4000)
 

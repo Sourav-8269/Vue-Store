@@ -17,6 +17,12 @@ export const useCartStore = defineStore('cart',()=>{
     },0)
   })
 
+  const clearCart=()=>{
+    cart.value=[];
+    carTotal.value=0;
+    cartCount.value=0;
+  }
+
   const addtoCart=(product)=>{
     console.log(cart.value)
     product.quantity=1;
@@ -61,7 +67,7 @@ export const useCartStore = defineStore('cart',()=>{
     }
   }
 
-  return {cart,cartCount,addtoCart,removeFromCart,carTotal,handleQuantity,checkInCart};
+  return {cart,cartCount,addtoCart,removeFromCart,carTotal,handleQuantity,checkInCart,clearCart};
 })
 
 export const useUserData=defineStore("user",()=>{
