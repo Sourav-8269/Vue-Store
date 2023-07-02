@@ -12,7 +12,7 @@ export const useCartStore = defineStore('cart',()=>{
 
   const carTotal=computed(()=>{
     return cart.value.reduce((total,product)=>{
-      console.log(total,product)
+      // console.log(total,product)
       return Number(total)+(Number(product.price)*(product.quantity||1));
     },0)
   })
@@ -24,13 +24,13 @@ export const useCartStore = defineStore('cart',()=>{
   }
 
   const addtoCart=(product)=>{
-    console.log(cart.value)
+    // console.log(cart.value)
     product.quantity=1;
     cart.value.push(product);
   }
 
   const removeFromCart=(id)=>{
-    console.log(id)
+    // console.log(id)
     cart.value=cart.value.filter((el)=>{
       return el.id!==id;
     })
@@ -71,9 +71,8 @@ export const useCartStore = defineStore('cart',()=>{
 })
 
 export const useUserData=defineStore("user",()=>{
-  const user=ref({});
-
-  const firstName=ref("");
+  const user=ref(JSON.parse(localStorage.getItem("vueUser"))||{});
+  const firstName=ref(JSON.parse(localStorage.getItem("vueUserName"))||"");
 
   const setFirstName=(name)=>{
     firstName.value=name;
@@ -90,6 +89,8 @@ export const useUserData=defineStore("user",()=>{
   const logout=()=>{
     user.value={};
     setFirstName(null);
+    localStorage.removeItem("vueUser")
+    localStorage.removeItem("vueUserName")
   }
 
   return {user,firstName,setFirstName,getFirstName,logout}

@@ -73,6 +73,8 @@ const handleClick = () => {
         // console.log(userData.user.value.displayName)
         let data=getFirstName(userData.user.value.displayName)
         userData.setFirstName(data);
+        localStorage.setItem("vueUserName",JSON.stringify(data));
+        localStorage.setItem("vueUser",JSON.stringify(res.user));
         // console.log(userData.getFirstName());
         handleLogin();
         setTimeout(()=>{

@@ -39,13 +39,13 @@ onMounted(async () => {
     let order = doc.data();
     order.id = doc.id;
     orders.value.push(order);
-    console.log(order);
+    // console.log(order);
     // console.log(data)
   });
 });
 
 const navigate = (id) => {
-  console.log(id);
+  // console.log(id);
   router.push(`order/${id}`);
 };
 </script>

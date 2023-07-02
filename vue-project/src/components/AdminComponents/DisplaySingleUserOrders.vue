@@ -42,7 +42,7 @@ onMounted(async () => {
     let data = docSnap.data();
     data.id = docSnap.id;
     orders.value = data;
-    console.log(orders.value.order);
+    // console.log(orders.value.order);
     products.value = orders.value.order;
   } else {
     console.log("No Such Document");
