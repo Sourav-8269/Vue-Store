@@ -117,7 +117,7 @@ const onSubmit = async () => {
   setTimeout(()=>{
     cartStore.clearCart();
     // console.log(cartStore.cart.value);
-    handleNavigate();
+    router.push("/showOrders")
   },4000)
 
 };
