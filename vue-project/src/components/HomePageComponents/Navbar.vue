@@ -14,7 +14,7 @@
         <div id="cart">
             <q-icon name="shopping_cart" @click="dialog=!dialog" size="20px" ></q-icon>
             <div id="cart_count">{{ cartStore.cartCount }}</div>
-            <CartSideBarComponent :visibility="dialog"/>
+            <CartSideBarComponent :visibility="dialog" :close="closeDialog"/>
         </div>
       </div>
     </div>
@@ -61,6 +61,10 @@ const handleLogout=()=>{
       clearInterval(id)
     }
   },350)
+}
+
+const closeDialog=()=>{
+  dialog.value=false;
 }
 
 const router=useRouter();

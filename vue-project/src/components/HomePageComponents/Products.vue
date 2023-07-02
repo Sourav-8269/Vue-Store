@@ -4,7 +4,7 @@
       <!-- <img :src="element.thumbnail" :alt="element.title" srcset="" /> -->
       <img :src="element.imageUrl" :alt="element.title" srcset="" />
       <p> {{ element.title }}</p>
-      <p>&#8377; {{ element.price }}</p>
+      <p><span>&#8377;</span>{{ element.price }}</p>
     </div>
   </div>
 </template>
@@ -79,5 +79,8 @@ const showProduct=(id)=>{
 #products img{
     width: 100%;
     border-radius: 10px;
+}
+span{
+  margin-right: 10px;
 }
 </style>

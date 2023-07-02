@@ -108,15 +108,15 @@ const form = reactive({
 });
 
 const onSubmit = async () => {
-  console.log(form);
+  // console.log(form);
   // onReset()
 
   const docRef=await addDoc(collection(db,"orders"),form);
-  console.log(docRef)
+  // console.log(docRef)
   handleLogin();
   setTimeout(()=>{
     cartStore.clearCart();
-    console.log(cartStore.cart.value);
+    // console.log(cartStore.cart.value);
     handleNavigate();
   },4000)
 

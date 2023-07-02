@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-dialog seamless :model-value=visibility position="right" auto-close={{true}}>
+    <q-dialog seamless :model-value=visibility position="right" auto-close=true>
       <q-card  id="cart_section" style="width: 350px">
         <q-card-section>
           <div v-if="!cartStore.cart.length" >
@@ -70,8 +70,7 @@ import { ref } from 'vue';
 
 const userData=useUserData();
 const router=useRouter();
-defineProps(["visibility"]);
-
+const { visibility, close } = defineProps(["visibility", "close"]);
 const persistent=ref(false);
 
 const cartStore=useCartStore();
@@ -81,6 +80,7 @@ const removeFromCart=(id)=>{
 }
 
 const navigateToLogin=()=>{
+  close();
   router.push("/login")
 }
 
@@ -90,6 +90,7 @@ const navigateToOrders=()=>{
     // alert("Please Sign In first")
     persistent.value=true;
   }else{
+    close();
     router.push("/orders")
   }
 }
