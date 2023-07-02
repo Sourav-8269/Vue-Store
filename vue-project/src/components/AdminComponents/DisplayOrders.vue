@@ -15,6 +15,7 @@
         <p>Address: {{ order.address }}</p>
         <p>Amount: &#8377; {{ order.total }}</p>
         <q-btn
+          id="btn"
           @click="navigate(order.id)"
           color="black"
           label="Show Products"
@@ -97,6 +98,15 @@ const navigate = (id) => {
   }
   #lhs img {
     width: 100%;
+  }
+}
+@media all and (max-width:400px) {
+  #container {
+    font-size: 16px;
+  }
+  #btn{
+    font-size: 14px;
+    padding: 2px;
   }
 }
 </style>
